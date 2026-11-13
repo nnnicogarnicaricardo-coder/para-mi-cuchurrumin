@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -161,27 +162,32 @@ button:active {
   font-size: 27px;
 }
 
-/* VIDEO HORIZONTAL 16:9 */
+/* BOTON PARA ABRIR EL VIDEO */
 
-.video-box {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  margin-top: 25px;
+.video-link {
+  display: block;
+  margin-top: 28px;
+  padding: 22px 12px;
   border-radius: 18px;
-  overflow: hidden;
-  background: #10060c;
-  border: 1px solid rgba(255,220,235,.25);
-  box-shadow: 0 10px 35px rgba(0,0,0,.35);
+  background: linear-gradient(135deg,#ffd8e5,#e88bab);
+  color: #58152f;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 1.5;
+  box-shadow: 0 8px 25px rgba(255,130,175,.3);
+  transition: transform .2s, box-shadow .2s;
 }
 
-.video-box iframe {
-  position: absolute;
-  inset: 0;
-  display: block;
-  width: 100%;
-  height: 100%;
-  border: 0;
+.video-link:active {
+  transform: scale(.96);
+}
+
+.video-note {
+  margin-top: 13px;
+  color: #f6dbe5;
+  font-size: 13px;
+  line-height: 1.6;
 }
 
 .signature {
@@ -210,10 +216,6 @@ footer {
 
   .letter {
     padding: 23px 14px;
-  }
-
-  .video-box {
-    border-radius: 12px;
   }
 }
 </style>
@@ -274,16 +276,20 @@ footer {
         cuánto te quiero.
       </p>
 
-      <div class="video-box">
+      <a
+        href="https://drive.google.com/file/d/1C872ww0K-7mqg6z01dnaaL7VQHc0Dtxv/view"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="video-link">
 
-        <iframe
-          src="https://drive.google.com/file/d/1C872ww0K-7mqg6z01dnaaL7VQHc0Dtxv/preview"
-          allow="autoplay; fullscreen"
-          allowfullscreen
-          loading="lazy">
-        </iframe>
+        ▶ ❤️ TOCÁ ACÁ PARA VER EL VIDEO ❤️
 
-      </div>
+      </a>
+
+      <p class="video-note">
+        Preparé algo especial para vos.
+        Espero que lo disfrutes completito. 💗
+      </p>
 
       <div class="signature">
         Con mucho amor,<br>
