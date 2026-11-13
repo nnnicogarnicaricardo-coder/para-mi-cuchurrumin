@@ -1,214 +1,284 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#351020">
 <title>Para mi Cuchurrumin ❤️</title>
 
 <style>
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
   margin: 0;
   min-height: 100vh;
   font-family: Georgia, serif;
-  color: white;
-  text-align: center;
-  background: linear-gradient(145deg, #390d20, #791d40, #bd5877);
+  color: #fff0f5;
+  background: radial-gradient(ellipse at top, #792744, transparent 65%),
+              linear-gradient(145deg, #180811, #50172f, #210b19);
   overflow-x: hidden;
 }
 
-.container {
-  width: 100%;
-  max-width: 650px;
-  margin: auto;
-  padding: 55px 20px;
+#hearts {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
 }
 
 .heart {
-  font-size: 48px;
-  animation: latido 1.5s infinite;
+  position: absolute;
+  bottom: -40px;
+  animation: floatUp linear forwards;
+  opacity: 0;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0); opacity: 0; }
+  15% { opacity: .7; }
+  100% { transform: translateY(-110vh) rotate(40deg); opacity: 0; }
+}
+
+main {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 650px;
+  margin: auto;
+  padding: 45px 20px;
+  text-align: center;
+}
+
+.small {
+  letter-spacing: 4px;
+  font-size: 11px;
+  color: #f0b8cb;
+  text-transform: uppercase;
 }
 
 h1 {
-  font-size: clamp(32px, 8vw, 48px);
-  margin: 18px 0;
-  color: #ffdce7;
+  font-size: clamp(35px, 9vw, 53px);
+  line-height: 1.15;
+  color: #ffe0eb;
+  text-shadow: 0 0 25px #ff8eb6;
+  margin: 22px 0 12px;
 }
 
-.subtitle {
-  font-size: 18px;
-  line-height: 1.7;
-  color: #ffeaf0;
+.rose {
+  font-size: 46px;
+  animation: pulse 2s infinite;
 }
 
-.card {
-  margin-top: 35px;
-  padding: 28px 20px;
-  background: rgba(255,255,255,0.10);
-  border: 1px solid rgba(255,255,255,0.25);
-  border-radius: 22px;
-  box-shadow: 0 10px 35px rgba(0,0,0,0.2);
+@keyframes pulse {
+  50% { transform: scale(1.13); }
+}
+
+.intro {
+  margin-top: 65px;
+  padding: 35px 22px;
+  border: 1px solid rgba(255,210,225,.35);
+  border-radius: 25px;
+  background: rgba(255,255,255,.075);
+  box-shadow: 0 15px 55px rgba(0,0,0,.35);
+  backdrop-filter: blur(10px);
+}
+
+.intro h2 {
+  color: #ffd2e2;
+  font-size: 27px;
+}
+
+.intro p, .message {
+  color: #f6dbe5;
+  line-height: 1.9;
+  font-size: 17px;
 }
 
 button {
-  border: none;
-  border-radius: 30px;
-  padding: 15px 28px;
-  margin-top: 20px;
-  background: #ffd3e1;
-  color: #651b37;
-  font-size: 17px;
+  border: 1px solid #ffe0eb;
+  border-radius: 40px;
+  padding: 16px 27px;
+  margin-top: 22px;
+  background: linear-gradient(135deg,#ffd8e5,#e88bab);
+  color: #58152f;
+  font-family: Georgia, serif;
+  font-size: 16px;
   font-weight: bold;
+  box-shadow: 0 5px 25px rgba(255,130,175,.3);
   cursor: pointer;
 }
 
-button:active {
-  transform: scale(0.96);
-}
+button:active { transform: scale(.96); }
 
-#sorpresa {
+#surprise {
   display: none;
-  margin-top: 35px;
-  animation: aparecer 1s ease;
+  animation: appear 1.2s ease;
+  margin-top: 45px;
 }
 
-.video-box {
-  width: 100%;
-  margin-top: 22px;
-  background: #160811;
-  border-radius: 18px;
-  overflow: hidden;
-}
-
-video {
-  display: block;
-  width: 100%;
-  height: auto;
-  max-height: 75vh;
-  object-fit: contain;
-}
-
-.message {
-  font-size: 19px;
-  line-height: 1.8;
-  color: #ffe5ed;
-  margin-top: 22px;
-}
-
-footer {
-  margin-top: 50px;
-  color: #ffdce7;
-  font-size: 14px;
-}
-
-.floating {
-  position: fixed;
-  bottom: -30px;
-  animation: flotar 8s linear infinite;
-  pointer-events: none;
-  opacity: 0.6;
-}
-
-@keyframes latido {
-  50% { transform: scale(1.2); }
-}
-
-@keyframes aparecer {
-  from { opacity: 0; transform: translateY(20px); }
+@keyframes appear {
+  from { opacity: 0; transform: translateY(25px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes flotar {
-  to {
-    transform: translateY(-110vh) rotate(360deg);
-    opacity: 0;
-  }
+.letter {
+  padding: 28px 22px;
+  border-radius: 22px;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,215,230,.25);
 }
+
+.letter h2 {
+  color: #ffd5e3;
+  font-size: 27px;
+}
+
+.video-box {
+  margin-top: 25px;
+  width: 100%;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #10060c;
+  border: 1px solid rgba(255,220,235,.25);
+  box-shadow: 0 10px 35px rgba(0,0,0,.35);
+}
+
+.video-box iframe {
+  display: block;
+  width: 100%;
+  height: min(72vh, 520px);
+  border: 0;
+}
+
+.signature {
+  margin-top: 28px;
+  font-size: 20px;
+  color: #ffd6e4;
+  line-height: 1.7;
+}
+
+footer {
+  margin-top: 55px;
+  font-size: 13px;
+  color: #eab7c9;
+}
+
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<div id="hearts"></div>
 
-  <div class="heart">❤️</div>
+<main>
 
-  <h1>Para mi Cuchurrumin</h1>
+  <div class="small">Una sorpresa especial para vos</div>
 
-  <p class="subtitle">
-    Preparé algo especial para vos...
-    <br>
-    Porque hay personas que hacen nuestra vida más bonita.
+  <div class="rose">🌹</div>
+
+  <h1>Para mi<br>Cuchurrumin</h1>
+
+  <p class="message">
+    Hay personas que llegan a nuestra vida
+    y la hacen un poquito más bonita...
   </p>
 
-  <div class="card">
-    <h2>Una pequeña sorpresa 💗</h2>
+  <section class="intro">
 
-    <p class="subtitle">
-      Quiero regalarte un pedacito de todo
-      lo lindo que siento por vos.
+    <div style="font-size:35px;">💌</div>
+
+    <h2>Preparé algo para vos</h2>
+
+    <p>
+      No es un regalo cualquiera.
+      Es un pequeño detalle que hice
+      pensando en vos y en nosotros.
     </p>
 
-    <button onclick="mostrarSorpresa()">
+    <p>¿Estás lista para descubrirlo?</p>
+
+    <button onclick="abrirSorpresa()">
       Abrí tu sorpresa ❤️
     </button>
-  </div>
 
-  <section id="sorpresa">
+  </section>
 
-    <h2>Esto es para vos, mi amor 💕</h2>
+  <section id="surprise">
 
-    <p class="message">
-      Ojalá puedas sentir en este pequeño detalle
-      todo el cariño que tengo para darte.
-      <br><br>
-      Sos alguien muy especial para mí.
-    </p>
+    <div class="letter">
 
-    <div class="video-box">
-      <video controls playsinline preload="metadata">
-        <source src="video.mp4" type="video/mp4">
-        Tu navegador no puede reproducir este video.
-      </video>
+      <div style="font-size:35px;">💗</div>
+
+      <h2>Mi amor...</h2>
+
+      <p class="message">
+        Quiero que sepas lo especial que sos para mí.
+        A veces las palabras no alcanzan para expresar
+        todo lo que uno siente, por eso quise prepararte
+        este pequeño regalo.
+        <br><br>
+        Ojalá te saque una sonrisa y te recuerde
+        cuánto te quiero.
+      </p>
+
+      <div class="video-box">
+
+        <iframe
+          src="https://drive.google.com/file/d/1C872ww0K-7mqg6z01dnaaL7VQHc0Dtxv/preview"
+          allow="autoplay; fullscreen"
+          allowfullscreen>
+        </iframe>
+
+      </div>
+
+      <div class="signature">
+        Con mucho amor,<br>
+        para mi Cuchurrumin ❤️
+      </div>
+
     </div>
-
-    <p class="message">
-      Te quiero muchísimo, mi Cuchurrumin.
-      ❤️
-    </p>
 
   </section>
 
   <footer>
-    Hecho con amor, especialmente para vos ❤️
+    Hecho especialmente para vos ❤️
   </footer>
 
-</div>
+</main>
 
 <script>
-function mostrarSorpresa() {
-  const seccion = document.getElementById("sorpresa");
-  seccion.style.display = "block";
-  seccion.scrollIntoView({ behavior: "smooth" });
+
+function abrirSorpresa() {
+  const sorpresa = document.getElementById("surprise");
+  sorpresa.style.display = "block";
+
+  document.querySelector(".intro").style.display = "none";
+
+  sorpresa.scrollIntoView({
+    behavior: "smooth",
+    block: "start"
+  });
 }
 
 function crearCorazon() {
-  const corazon = document.createElement("div");
-  corazon.className = "floating";
-  corazon.textContent = "❤️";
-  corazon.style.left = Math.random() * 100 + "vw";
-  corazon.style.fontSize = (15 + Math.random() * 20) + "px";
-  document.body.appendChild(corazon);
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.textContent = Math.random() > 0.5 ? "❤️" : "💕";
 
-  setTimeout(() => corazon.remove(), 8000);
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = (15 + Math.random() * 20) + "px";
+  heart.style.animationDuration = (6 + Math.random() * 5) + "s";
+
+  document.getElementById("hearts").appendChild(heart);
+
+  setTimeout(() => heart.remove(), 11000);
 }
 
-setInterval(crearCorazon, 1200);
+setInterval(crearCorazon, 800);
+
 </script>
 
 </body>
 </html>
-
