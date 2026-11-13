@@ -1,11 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#351020">
-
+<meta name="theme-color" content="#f9dce7">
 <title>Para mi Cuchurrumin ❤️</title>
 
 <style>
@@ -13,136 +11,34 @@
   box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 body {
   margin: 0;
   min-height: 100vh;
   font-family: Georgia, serif;
-  color: #fff0f5;
-  background:
-    radial-gradient(ellipse at top, #792744, transparent 65%),
-    linear-gradient(145deg, #180811, #50172f, #210b19);
-  overflow-x: hidden;
-}
-
-#hearts {
-  position: fixed;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.heart {
-  position: absolute;
-  bottom: -40px;
-  animation: floatUp linear forwards;
-  opacity: 0;
-}
-
-@keyframes floatUp {
-  0% {
-    transform: translateY(0);
-    opacity: 0;
-  }
-  15% {
-    opacity: .7;
-  }
-  100% {
-    transform: translateY(-110vh) rotate(40deg);
-    opacity: 0;
-  }
-}
-
-main {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  max-width: 750px;
-  margin: auto;
-  padding: 45px 20px;
+  background: #f9dce7;
+  color: #672b45;
   text-align: center;
 }
 
-.small {
-  letter-spacing: 4px;
-  font-size: 11px;
-  color: #f0b8cb;
-  text-transform: uppercase;
+main {
+  width: 100%;
+  max-width: 720px;
+  margin: auto;
+  padding: 28px 18px 45px;
 }
 
-h1 {
-  font-size: clamp(35px, 9vw, 53px);
-  line-height: 1.15;
-  color: #ffe0eb;
-  text-shadow: 0 0 25px #ff8eb6;
-  margin: 22px 0 12px;
+.screen {
+  animation: appear 1s ease;
 }
 
-.rose {
-  font-size: 46px;
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  50% {
-    transform: scale(1.13);
-  }
-}
-
-.intro {
-  margin-top: 65px;
-  padding: 35px 22px;
-  border: 1px solid rgba(255,210,225,.35);
-  border-radius: 25px;
-  background: rgba(255,255,255,.075);
-  box-shadow: 0 15px 55px rgba(0,0,0,.35);
-  backdrop-filter: blur(10px);
-}
-
-.intro h2 {
-  color: #ffd2e2;
-  font-size: 27px;
-}
-
-.intro p,
-.message {
-  color: #f6dbe5;
-  line-height: 1.9;
-  font-size: 17px;
-}
-
-button {
-  border: 1px solid #ffe0eb;
-  border-radius: 40px;
-  padding: 16px 27px;
-  margin-top: 22px;
-  background: linear-gradient(135deg,#ffd8e5,#e88bab);
-  color: #58152f;
-  font-family: Georgia, serif;
-  font-size: 16px;
-  font-weight: bold;
-  box-shadow: 0 5px 25px rgba(255,130,175,.3);
-  cursor: pointer;
-}
-
-button:active {
-  transform: scale(.96);
-}
-
-#surprise {
+.hidden {
   display: none;
-  animation: appear 1.2s ease;
-  margin-top: 45px;
 }
 
 @keyframes appear {
   from {
     opacity: 0;
-    transform: translateY(25px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
@@ -150,194 +46,295 @@ button:active {
   }
 }
 
-.letter {
-  padding: 28px 22px;
-  border-radius: 22px;
-  background: rgba(255,255,255,.08);
-  border: 1px solid rgba(255,215,230,.25);
+.cover {
+  min-height: 88vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.letter h2 {
-  color: #ffd5e3;
-  font-size: 27px;
+.eyebrow {
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-size: 11px;
+  color: #a44c70;
 }
 
-/* BOTON PARA ABRIR EL VIDEO */
+h1 {
+  font-size: clamp(36px, 9vw, 54px);
+  line-height: 1.15;
+  margin: 18px 0;
+  color: #873b5b;
+}
 
-.video-link {
-  display: block;
-  margin-top: 28px;
-  padding: 22px 12px;
-  border-radius: 18px;
-  background: linear-gradient(135deg,#ffd8e5,#e88bab);
-  color: #58152f;
-  text-decoration: none;
-  font-weight: bold;
+.characters {
+  width: 100%;
+  max-width: 430px;
+  min-height: 230px;
+  margin: 15px auto;
+  border-radius: 28px;
+  background: linear-gradient(145deg,#fff4f7,#f3bfd2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  box-shadow: 0 12px 35px #9d527326;
+}
+
+.characters .dog {
+  font-size: 100px;
+}
+
+.characters .bird {
+  font-size: 38px;
+  margin-top: -15px;
+}
+
+.characters p {
+  font-size: 13px;
+  color: #98516c;
+  margin: 8px;
+}
+
+.verse {
+  max-width: 470px;
+  margin: 22px auto;
+  padding: 18px;
+  border-top: 1px solid #d99ab2;
+  border-bottom: 1px solid #d99ab2;
+  line-height: 1.8;
   font-size: 16px;
-  line-height: 1.5;
-  box-shadow: 0 8px 25px rgba(255,130,175,.3);
-  transition: transform .2s, box-shadow .2s;
+  font-style: italic;
 }
 
-.video-link:active {
+.verse small {
+  display: block;
+  margin-top: 8px;
+  font-style: normal;
+  color: #a44c70;
+}
+
+.button {
+  display: inline-block;
+  border: 0;
+  border-radius: 40px;
+  padding: 17px 30px;
+  margin-top: 15px;
+  background: linear-gradient(135deg,#b84d75,#e88bab);
+  color: white;
+  font-family: Georgia, serif;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  box-shadow: 0 8px 24px #a94b713d;
+  cursor: pointer;
+}
+
+.button:active {
   transform: scale(.96);
 }
 
-.video-note {
-  margin-top: 13px;
+.second {
+  min-height: 90vh;
+  margin-top: 15px;
+  padding: 35px 22px;
+  border-radius: 28px;
+  background:
+    radial-gradient(ellipse at top,#792744,transparent 70%),
+    linear-gradient(145deg,#180811,#50172f,#210b19);
+  color: #fff0f5;
+  box-shadow: 0 15px 45px #50172f35;
+}
+
+.heart {
+  font-size: 45px;
+  margin-bottom: 12px;
+}
+
+.second h2 {
+  color: #ffe0eb;
+  font-size: 32px;
+}
+
+.dedication {
   color: #f6dbe5;
-  font-size: 13px;
-  line-height: 1.6;
+  font-size: 18px;
+  line-height: 2;
+  margin: 25px auto;
+  max-width: 520px;
+}
+
+.special {
+  color: #ffd5e3;
+  font-size: 20px;
+  font-style: italic;
+  line-height: 1.7;
+  margin: 25px 0;
+}
+
+.video-card {
+  margin-top: 35px;
+  padding: 24px 15px;
+  border: 1px solid #e9a6c0;
+  border-radius: 22px;
+  background: #ffffff0d;
+}
+
+.video-card h3 {
+  color: #ffe0eb;
+  font-size: 23px;
+}
+
+.video-card p {
+  color: #f6dbe5;
+  line-height: 1.7;
+  font-size: 15px;
+}
+
+.video-button {
+  display: block;
+  background: linear-gradient(135deg,#ffd8e5,#e88bab);
+  color: #58152f;
+  border-radius: 40px;
+  padding: 19px 12px;
+  margin-top: 20px;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 15px;
 }
 
 .signature {
-  margin-top: 28px;
-  font-size: 20px;
+  margin-top: 32px;
   color: #ffd6e4;
-  line-height: 1.7;
+  font-size: 20px;
+  line-height: 1.8;
 }
 
 footer {
-  margin-top: 55px;
-  padding-bottom: 20px;
+  margin-top: 25px;
   font-size: 13px;
-  color: #eab7c9;
-}
-
-@media (max-width: 480px) {
-  main {
-    padding: 35px 15px;
-  }
-
-  .intro {
-    margin-top: 45px;
-    padding: 28px 17px;
-  }
-
-  .letter {
-    padding: 23px 14px;
-  }
+  color: #a44c70;
 }
 </style>
 </head>
 
 <body>
 
-<div id="hearts"></div>
-
 <main>
 
-  <div class="small">Una sorpresa especial para vos</div>
+  <!-- PORTADA -->
 
-  <div class="rose">🌹</div>
+  <section id="cover" class="screen cover">
 
-  <h1>Para mi<br>Cuchurrumin</h1>
+    <div class="eyebrow">
+      Una pequeña sorpresa para alguien especial
+    </div>
 
-  <p class="message">
-    Hay personas que llegan a nuestra vida
-    y la hacen un poquito más bonita...
-  </p>
+    <div class="characters">
+      <div class="dog">🐶</div>
+      <div class="bird">🐤 💗</div>
+      <p>Un rinconcito lleno de amor para vos</p>
+    </div>
 
-  <section class="intro">
+    <h1>Hola, mi<br>Cuchurrumin ❤️</h1>
 
-    <div style="font-size:35px;">💌</div>
-
-    <h2>Preparé algo para vos</h2>
-
-    <p>
-      No es un regalo cualquiera.
-      Es un pequeño detalle que hice
-      pensando en vos y en nosotros.
+    <p style="font-size:18px;line-height:1.7">
+      Tengo una sorpresita preparada
+      especialmente para vos...
     </p>
 
-    <p>¿Estás lista para descubrirlo?</p>
+    <div class="verse">
+      «El amor es paciente, es bondadoso;
+      el amor no tiene envidia, no es presumido
+      ni orgulloso».
+      <small>1 Corintios 13:4</small>
+    </div>
 
-    <button onclick="abrirSorpresa()">
-      Abrí tu sorpresa ❤️
+    <button class="button" onclick="abrirRegalo()">
+      Abrí tu regalito 💌
     </button>
 
   </section>
 
-  <section id="surprise">
 
-    <div class="letter">
+  <!-- SEGUNDA PANTALLA -->
 
-      <div style="font-size:35px;">💗</div>
+  <section id="gift" class="screen second hidden">
 
-      <h2>Mi amor...</h2>
+    <div class="heart">💗</div>
 
-      <p class="message">
-        Quiero que sepas lo especial que sos para mí.
-        A veces las palabras no alcanzan para expresar
-        todo lo que uno siente, por eso quise prepararte
-        este pequeño regalo.
-        <br><br>
-        Ojalá te saque una sonrisa y te recuerde
-        cuánto te quiero.
+    <h2>Mi amor...</h2>
+
+    <div class="special">
+      Dios sabía lo que hacía cuando
+      cruzó nuestros caminos.
+    </div>
+
+    <div class="dedication">
+      De todas las cosas bonitas que me regaló
+      la vida, vos sos la más hermosa.
+
+      <br><br>
+
+      Llegaste sin que lo esperara y te convertiste
+      en lo mejor que me pasó.
+
+      <br><br>
+
+      Si volviera a empezar, volvería a elegirte
+      a vos, mi Cuchurrumin. ❤️
+    </div>
+
+    <div class="video-card">
+
+      <div style="font-size:38px">🎬 💕</div>
+
+      <h3>Un videíto para vos</h3>
+
+      <p>
+        Preparé algo especial.
+        Quiero que puedas verlo completito
+        y que te saque una sonrisa.
       </p>
 
       <a
+        class="video-button"
         href="https://drive.google.com/file/d/1C872ww0K-7mqg6z01dnaaL7VQHc0Dtxv/view"
         target="_blank"
-        rel="noopener noreferrer"
-        class="video-link">
+        rel="noopener noreferrer">
 
-        ▶ ❤️ TOCÁ ACÁ PARA VER EL VIDEO ❤️
+        ▶ VER MI VIDEO ❤️
 
       </a>
 
-      <p class="video-note">
-        Preparé algo especial para vos.
-        Espero que lo disfrutes completito. 💗
-      </p>
+    </div>
 
-      <div class="signature">
-        Con mucho amor,<br>
-        para mi Cuchurrumin ❤️
-      </div>
-
+    <div class="signature">
+      Con muchísimo amor,<br>
+      para mi Cuchurrumin ❤️
     </div>
 
   </section>
 
   <footer>
-    Hecho especialmente para vos ❤️
+    Hecho especialmente para vos 💗
   </footer>
 
 </main>
 
 <script>
+function abrirRegalo() {
+  document.getElementById("cover").classList.add("hidden");
 
-function abrirSorpresa() {
-  const sorpresa = document.getElementById("surprise");
+  const gift = document.getElementById("gift");
+  gift.classList.remove("hidden");
 
-  sorpresa.style.display = "block";
-
-  document.querySelector(".intro").style.display = "none";
-
-  sorpresa.scrollIntoView({
-    behavior: "smooth",
-    block: "start"
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
   });
 }
-
-function crearCorazon() {
-  const heart = document.createElement("div");
-
-  heart.className = "heart";
-  heart.textContent = Math.random() > 0.5 ? "❤️" : "💕";
-
-  heart.style.left = Math.random() * 100 + "vw";
-  heart.style.fontSize = (15 + Math.random() * 20) + "px";
-  heart.style.animationDuration = (6 + Math.random() * 5) + "s";
-
-  document.getElementById("hearts").appendChild(heart);
-
-  setTimeout(() => heart.remove(), 11000);
-}
-
-setInterval(crearCorazon, 800);
-
 </script>
 
 </body>
