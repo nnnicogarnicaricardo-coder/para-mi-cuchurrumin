@@ -1,22 +1,29 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#351020">
+
 <title>Para mi Cuchurrumin ❤️</title>
 
 <style>
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   margin: 0;
   min-height: 100vh;
   font-family: Georgia, serif;
   color: #fff0f5;
-  background: radial-gradient(ellipse at top, #792744, transparent 65%),
-              linear-gradient(145deg, #180811, #50172f, #210b19);
+  background:
+    radial-gradient(ellipse at top, #792744, transparent 65%),
+    linear-gradient(145deg, #180811, #50172f, #210b19);
   overflow-x: hidden;
 }
 
@@ -36,16 +43,24 @@ body {
 }
 
 @keyframes floatUp {
-  0% { transform: translateY(0); opacity: 0; }
-  15% { opacity: .7; }
-  100% { transform: translateY(-110vh) rotate(40deg); opacity: 0; }
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  15% {
+    opacity: .7;
+  }
+  100% {
+    transform: translateY(-110vh) rotate(40deg);
+    opacity: 0;
+  }
 }
 
 main {
   position: relative;
   z-index: 1;
   width: 100%;
-  max-width: 650px;
+  max-width: 750px;
   margin: auto;
   padding: 45px 20px;
   text-align: center;
@@ -72,7 +87,9 @@ h1 {
 }
 
 @keyframes pulse {
-  50% { transform: scale(1.13); }
+  50% {
+    transform: scale(1.13);
+  }
 }
 
 .intro {
@@ -90,7 +107,8 @@ h1 {
   font-size: 27px;
 }
 
-.intro p, .message {
+.intro p,
+.message {
   color: #f6dbe5;
   line-height: 1.9;
   font-size: 17px;
@@ -110,7 +128,9 @@ button {
   cursor: pointer;
 }
 
-button:active { transform: scale(.96); }
+button:active {
+  transform: scale(.96);
+}
 
 #surprise {
   display: none;
@@ -119,8 +139,14 @@ button:active { transform: scale(.96); }
 }
 
 @keyframes appear {
-  from { opacity: 0; transform: translateY(25px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .letter {
@@ -135,9 +161,13 @@ button:active { transform: scale(.96); }
   font-size: 27px;
 }
 
+/* VIDEO HORIZONTAL 16:9 */
+
 .video-box {
-  margin-top: 25px;
+  position: relative;
   width: 100%;
+  aspect-ratio: 16 / 9;
+  margin-top: 25px;
   border-radius: 18px;
   overflow: hidden;
   background: #10060c;
@@ -146,9 +176,11 @@ button:active { transform: scale(.96); }
 }
 
 .video-box iframe {
+  position: absolute;
+  inset: 0;
   display: block;
   width: 100%;
-  height: min(72vh, 520px);
+  height: 100%;
   border: 0;
 }
 
@@ -161,10 +193,29 @@ button:active { transform: scale(.96); }
 
 footer {
   margin-top: 55px;
+  padding-bottom: 20px;
   font-size: 13px;
   color: #eab7c9;
 }
 
+@media (max-width: 480px) {
+  main {
+    padding: 35px 15px;
+  }
+
+  .intro {
+    margin-top: 45px;
+    padding: 28px 17px;
+  }
+
+  .letter {
+    padding: 23px 14px;
+  }
+
+  .video-box {
+    border-radius: 12px;
+  }
+}
 </style>
 </head>
 
@@ -228,7 +279,8 @@ footer {
         <iframe
           src="https://drive.google.com/file/d/1C872ww0K-7mqg6z01dnaaL7VQHc0Dtxv/preview"
           allow="autoplay; fullscreen"
-          allowfullscreen>
+          allowfullscreen
+          loading="lazy">
         </iframe>
 
       </div>
@@ -252,6 +304,7 @@ footer {
 
 function abrirSorpresa() {
   const sorpresa = document.getElementById("surprise");
+
   sorpresa.style.display = "block";
 
   document.querySelector(".intro").style.display = "none";
@@ -264,6 +317,7 @@ function abrirSorpresa() {
 
 function crearCorazon() {
   const heart = document.createElement("div");
+
   heart.className = "heart";
   heart.textContent = Math.random() > 0.5 ? "❤️" : "💕";
 
