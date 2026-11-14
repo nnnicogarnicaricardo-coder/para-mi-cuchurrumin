@@ -1,326 +1,565 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Para mi Cuchurrumin ❤️</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para mi Cuchurrumin ❤️</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<style>
+* { box-sizing: border-box; }
 
-    body {
-      margin: 0;
-      font-family: Georgia, 'Times New Roman', serif;
-      background: #fff0f3;
-      color: #612638;
-      text-align: center;
-    }
+body {
+  margin: 0;
+  font-family: Georgia, 'Times New Roman', serif;
+  background: #fff0f3;
+  color: #612638;
+  text-align: center;
+}
 
-    .screen {
-      min-height: 100vh;
-      padding: 35px 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
+.screen {
+  min-height: 100vh;
+  padding: 35px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
-    .welcome {
-      background: linear-gradient(145deg, #fff0f3, #f4cbd8);
-    }
+/* PORTADA INTERACTIVA */
 
-    .welcome h1 {
-      font-size: clamp(38px, 9vw, 52px);
-      color: #8b2949;
-      margin: 15px 0;
-    }
+.welcome {
+  background: linear-gradient(145deg, #fff0f3, #f4cbd8);
+  overflow: hidden;
+}
 
-    .welcome-heart {
-      font-size: 65px;
-      margin: 15px;
-      animation: latido 1.4s infinite;
-    }
+.welcome h1 {
+  font-size: clamp(30px, 8vw, 42px);
+  color: #8b2949;
+  margin: 15px 0;
+}
 
-    @keyframes latido {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.12); }
-    }
+.welcome p {
+  font-size: 18px;
+  line-height: 1.7;
+  max-width: 350px;
+}
 
-    .welcome p {
-      font-size: 19px;
-      line-height: 1.7;
-      max-width: 350px;
-    }
+.welcome-subtitle {
+  color: #a34b68;
+  letter-spacing: 2px;
+  font-size: 12px !important;
+  font-weight: bold;
+}
 
-    .button {
-      border: none;
-      border-radius: 30px;
-      padding: 15px 28px;
-      background: #9b3154;
-      color: white;
-      font-size: 17px;
-      font-weight: bold;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-block;
-      box-shadow: 0 5px 15px rgba(100, 25, 55, 0.2);
-      margin-top: 15px;
-    }
+.envelope-area {
+  width: 280px;
+  height: 220px;
+  position: relative;
+  margin: 25px auto;
+  cursor: pointer;
+  perspective: 900px;
+}
 
-    .cover {
-      background: linear-gradient(145deg, #fff0f3, #f9dce5);
-    }
+.envelope {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  height: 165px;
+  background: #9b3154;
+  border-radius: 8px;
+  box-shadow: 0 12px 30px rgba(100,25,55,.22);
+}
 
-    .eyebrow {
-      color: #a34b68;
-      font-size: 14px;
-      letter-spacing: 1.5px;
-      margin-bottom: 20px;
-    }
+.envelope::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg,#b64c6e,#812341);
+  clip-path: polygon(0 0,50% 65%,100% 0);
+  z-index: 3;
+}
 
-    .cover h1 {
-      font-size: clamp(34px, 8vw, 48px);
-      line-height: 1.15;
-      margin: 20px 0;
-      color: #8b2949;
-    }
+.envelope::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(35deg,#8b2949,#c65a7a);
+  clip-path: polygon(0 100%,50% 48%,100% 100%);
+  z-index: 4;
+}
 
-    .characters {
-      width: 100%;
-      max-width: 430px;
-      min-height: 210px;
-      padding: 15px;
-      border-radius: 25px;
-      background: rgba(255,255,255,0.65);
-      box-shadow: 0 8px 25px rgba(120, 35, 65, 0.10);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+.envelope-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 110px;
+  background: #bd5676;
+  clip-path: polygon(0 0,100% 0,50% 100%);
+  transform-origin: top;
+  transition: transform .9s ease;
+  z-index: 5;
+}
 
-    .snoopy-image {
-      display: block;
-      width: 100%;
-      max-width: 350px;
-      max-height: 250px;
-      object-fit: contain;
-    }
+.letter {
+  position: absolute;
+  width: 88%;
+  height: 145px;
+  left: 6%;
+  bottom: 12px;
+  background: #fffaf4;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #8b2949;
+  padding: 10px;
+  transition: transform 1s ease;
+  z-index: 2;
+  box-shadow: 0 2px 10px rgba(0,0,0,.08);
+}
 
-    .intro-text {
-      font-size: 18px;
-      line-height: 1.7;
-      max-width: 430px;
-    }
+.letter span {
+  font-size: 38px;
+}
 
-    .bible-photo {
-      display: block;
-      width: 100%;
-      max-width: 430px;
-      height: 190px;
-      object-fit: cover;
-      border-radius: 20px;
-      margin: 20px auto;
-      box-shadow: 0 6px 18px rgba(80, 20, 40, 0.15);
-    }
+.letter p {
+  font-size: 14px;
+  margin: 5px;
+}
 
-    .verse {
-      max-width: 430px;
-      background: rgba(255,255,255,0.75);
-      padding: 20px;
-      border-radius: 18px;
-      font-size: 16px;
-      line-height: 1.7;
-      font-style: italic;
-      margin: 15px 0 25px;
-    }
+.seal {
+  position: absolute;
+  top: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 43px;
+  height: 43px;
+  border-radius: 50%;
+  background: #ffe2eb;
+  color: #9b3154;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 23px;
+  z-index: 6;
+  transition: opacity .3s;
+}
 
-    .verse small {
-      display: block;
-      margin-top: 10px;
-      font-style: normal;
-      font-weight: bold;
-      color: #a34b68;
-    }
+.envelope-area.opened .envelope-flap {
+  transform: rotateX(180deg);
+  z-index: 1;
+}
 
-    .gift {
-      display: none;
-      background: linear-gradient(150deg, #58172e, #8d294b, #b34d6b);
-      color: #fff5f7;
-    }
+.envelope-area.opened .letter {
+  transform: translateY(-115px);
+  z-index: 6;
+}
 
-    .gift h2 {
-      font-size: clamp(30px, 7vw, 42px);
-      color: #ffe2eb;
-      margin: 15px 0;
-    }
+.envelope-area.opened .seal {
+  opacity: 0;
+}
 
-    .gift-message {
-      max-width: 480px;
-      font-size: 18px;
-      line-height: 1.8;
-      padding: 10px;
-    }
+.tap-hint {
+  font-size: 14px !important;
+  color: #a34b68;
+  animation: pulse 1.5s infinite;
+}
 
-    .heart {
-      font-size: 38px;
-      margin: 12px;
-    }
+@keyframes pulse {
+  50% { opacity: .45; }
+}
 
-    .video-button {
-      margin-top: 20px;
-      background: #ffe2eb;
-      color: #76223f;
-    }
+/* CARTA DESPLEGADA */
 
-    .signature {
-      margin-top: 30px;
-      font-size: 19px;
-      font-style: italic;
-      color: #ffe2eb;
-    }
-  </style>
+.letter-message {
+  display: none;
+  width: 100%;
+  max-width: 410px;
+  background: #fffaf4;
+  padding: 27px 23px;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(100,25,55,.14);
+  border: 1px solid #f0d4dc;
+  animation: appear 1s ease;
+}
+
+.letter-message h2 {
+  color: #9b3154;
+  font-size: 25px;
+}
+
+.letter-message p {
+  font-size: 17px;
+  line-height: 1.85;
+  color: #704052;
+}
+
+.letter-message .little-heart {
+  font-size: 28px;
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(25px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.button {
+  border: none;
+  border-radius: 30px;
+  padding: 15px 28px;
+  background: #9b3154;
+  color: white;
+  font-size: 17px;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  box-shadow: 0 5px 15px rgba(100,25,55,.2);
+  margin-top: 15px;
+}
+
+.continue-button {
+  display: none;
+}
+
+/* SEGUNDA PANTALLA */
+
+.cover {
+  background: linear-gradient(145deg,#fff0f3,#f9dce5);
+}
+
+.eyebrow {
+  color: #a34b68;
+  font-size: 14px;
+  letter-spacing: 1.5px;
+  margin-bottom: 20px;
+}
+
+.cover h1 {
+  font-size: clamp(34px,8vw,48px);
+  line-height: 1.15;
+  margin: 20px 0;
+  color: #8b2949;
+}
+
+.characters {
+  width: 100%;
+  max-width: 430px;
+  min-height: 210px;
+  padding: 15px;
+  border-radius: 25px;
+  background: rgba(255,255,255,.65);
+  box-shadow: 0 8px 25px rgba(120,35,65,.10);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.snoopy-image {
+  display: block;
+  width: 100%;
+  max-width: 350px;
+  max-height: 250px;
+  object-fit: contain;
+}
+
+.intro-text {
+  font-size: 18px;
+  line-height: 1.7;
+  max-width: 430px;
+}
+
+.bible-photo {
+  display: block;
+  width: 100%;
+  max-width: 430px;
+  height: 190px;
+  object-fit: cover;
+  border-radius: 20px;
+  margin: 20px auto;
+  box-shadow: 0 6px 18px rgba(80,20,40,.15);
+}
+
+.verse {
+  max-width: 430px;
+  background: rgba(255,255,255,.75);
+  padding: 20px;
+  border-radius: 18px;
+  font-size: 16px;
+  line-height: 1.7;
+  font-style: italic;
+  margin: 15px 0 25px;
+}
+
+.verse small {
+  display: block;
+  margin-top: 10px;
+  font-style: normal;
+  font-weight: bold;
+  color: #a34b68;
+}
+
+/* REGALO FINAL */
+
+.gift {
+  display: none;
+  background: linear-gradient(150deg,#58172e,#8d294b,#b34d6b);
+  color: #fff5f7;
+}
+
+.gift h2 {
+  font-size: clamp(30px,7vw,42px);
+  color: #ffe2eb;
+  margin: 15px 0;
+}
+
+.gift-message {
+  max-width: 480px;
+  font-size: 18px;
+  line-height: 1.8;
+  padding: 10px;
+}
+
+.heart {
+  font-size: 38px;
+  margin: 12px;
+}
+
+.video-button {
+  margin-top: 20px;
+  background: #ffe2eb;
+  color: #76223f;
+}
+
+.signature {
+  margin-top: 30px;
+  font-size: 19px;
+  font-style: italic;
+  color: #ffe2eb;
+}
+
+</style>
 </head>
 
 <body>
 
-  <audio id="musica" loop preload="auto">
-    <source src="Strawberry%20Guy%20-%20%20Mrs%20Magic%20(Strings%20Version)(MP3_160K).mp3" type="audio/mpeg">
-  </audio>
+<audio id="musica" loop preload="auto">
+  <source src="Strawberry%20Guy%20-%20%20Mrs%20Magic%20(Strings%20Version)(MP3_160K).mp3" type="audio/mpeg">
+</audio>
 
-  <section id="welcome" class="screen welcome">
+<!-- PRIMERA PANTALLA: SOBRE -->
 
-    <div class="welcome-heart">💗</div>
+<section id="welcome" class="screen welcome">
 
-    <h1>Hola, amor ❤️</h1>
+  <p class="welcome-subtitle">UNA PEQUEÑA SORPRESA PARA VOS</p>
+
+  <h1>Hola, mi amor ❤️</h1>
+
+  <p>
+    Hay algo que preparé especialmente
+    para vos. Pero antes...
+    tengo una cartita para entregarte.
+  </p>
+
+  <div class="envelope-area" id="envelopeArea" onclick="abrirCarta()">
+
+    <div class="envelope">
+      <div class="letter">
+        <span>💌</span>
+        <p>Una carta para vos...</p>
+      </div>
+
+      <div class="envelope-flap"></div>
+      <div class="seal">❤️</div>
+    </div>
+
+  </div>
+
+  <p class="tap-hint" id="tapHint">
+    Tocá el sobre para abrirlo 💗
+  </p>
+
+  <div class="letter-message" id="letterMessage">
+
+    <div class="little-heart">💗</div>
+
+    <h2>Mi Cuchurrumin ❤️</h2>
 
     <p>
-      Preparé algo muy especial para vos.
-      Solo necesito que me regales
-      un momentito...
+      No sé si existen las palabras perfectas
+      para expresar todo lo que siento,
+      pero quería regalarte un pedacito
+      de mi corazón.
     </p>
 
-    <button class="button" onclick="comenzar()">
-      Presioná aquí 💌
-    </button>
-
-    <p style="font-size:14px; opacity:0.7;">
-      Hecho con mucho amor para vos ❤️
+    <p>
+      Preparé esto pensando en vos,
+      en tu sonrisa y en lo especial
+      que sos para mí.
     </p>
 
-  </section>
-
-  <section id="cover" class="screen cover" style="display:none;">
-
-    <div class="eyebrow">
-      UNA PEQUEÑA SORPRESA PARA ALGUIEN ESPECIAL ❤️
-    </div>
-
-    <h1>Hola, mi<br>Cuchurrumin ❤️</h1>
-
-    <div class="characters">
-      <img
-        src="1794610422552.jpg"
-        alt="Snoopy y Woodstock"
-        class="snoopy-image">
-    </div>
-
-    <p class="intro-text">
-      Tengo una sorpresita preparada
-      especialmente para vos...
+    <p>
+      Así que acomodate, porque tengo
+      una pequeña sorpresa...
     </p>
 
-    <img
-      src="photo-1761530622114-5572fb33cdf1.jpeg"
-      alt="Una Biblia iluminada por la luz"
-      class="bible-photo">
+    <div class="little-heart">❤️</div>
 
-    <div class="verse">
-      «El amor es paciente, es bondadoso;
-      el amor no tiene envidia, no es presumido
-      ni orgulloso».
-      <small>1 Corintios 13:4</small>
-    </div>
+  </div>
 
-    <button class="button" onclick="abrirRegalo()">
-      Abrí tu regalito 💌
-    </button>
+  <button
+    id="continueButton"
+    class="button continue-button"
+    onclick="continuar()">
+    Continuar, mi amor ❤️
+  </button>
 
-  </section>
+  <p style="font-size:13px;opacity:.65;">
+    Hecho con muchísimo amor para vos.
+  </p>
 
-  <section id="gift" class="screen gift">
+</section>
 
-    <div class="heart">❤️</div>
+<!-- SEGUNDA PANTALLA: SNOOPY Y BIBLIA -->
 
-    <h2>Para vos, mi amor</h2>
+<section id="cover" class="screen cover" style="display:none;">
 
-    <div class="gift-message">
-      Quería prepararte algo diferente,
-      algo que pudieras guardar y volver
-      a mirar cuando quisieras.
+  <div class="eyebrow">
+    UNA PEQUEÑA SORPRESA PARA ALGUIEN ESPECIAL ❤️
+  </div>
 
-      <br><br>
+  <h1>Hola, mi<br>Cuchurrumin ❤️</h1>
 
-      Gracias por llegar a mi vida,
-      por cada sonrisa, cada abrazo
-      y cada momento compartido.
+  <div class="characters">
+    <img src="1794610422552.jpg"
+         alt="Snoopy y Woodstock"
+         class="snoopy-image">
+  </div>
 
-      <br><br>
+  <p class="intro-text">
+    Tengo una sorpresita preparada
+    especialmente para vos...
+  </p>
 
-      Le doy gracias a Dios por haberte
-      puesto en mi camino. Sos una persona
-      muy especial para mí y quiero seguir
-      construyendo momentos hermosos
-      a tu lado.
+  <img src="photo-1761530622114-5572fb33cdf1.jpeg"
+       alt="Una Biblia iluminada por la luz"
+       class="bible-photo">
 
-      <br><br>
+  <div class="verse">
+    «El amor es paciente, es bondadoso;
+    el amor no tiene envidia, no es presumido
+    ni orgulloso».
+    <small>1 Corintios 13:4</small>
+  </div>
 
-      Este pequeño detalle está hecho
-      con muchísimo amor, especialmente
-      para vos.
-    </div>
+  <button class="button" onclick="abrirRegalo()">
+    Abrí tu regalito 💌
+  </button>
 
-    <div class="heart">💗</div>
+</section>
 
-    <a
-      class="button video-button"
-      href="https://drive.google.com/file/d/13xOuE3R-lyMb-b_rnhyTA4f9YnfgmPXf/view?usp=drivesdk"
-      target="_blank"
-      rel="noopener noreferrer">
-      Mirá tu video especial 🎬❤️
-    </a>
+<!-- TERCERA PANTALLA: REGALO FINAL -->
 
-    <div class="signature">
-      Te quiero muchísimo,<br>
-      mi Cuchurrumin ❤️
-    </div>
+<section id="gift" class="screen gift">
 
-  </section>
+  <div class="heart">❤️</div>
 
-  <script>
+  <h2>Para vos, mi amor</h2>
 
-    function comenzar() {
-      const musica = document.getElementById("musica");
+  <div class="gift-message">
+    Quería prepararte algo diferente,
+    algo que pudieras guardar y volver
+    a mirar cuando quisieras.
 
-      musica.play().catch(error => {
-        console.log("No se pudo iniciar la música:", error);
-      });
+    <br><br>
 
-      document.getElementById("welcome").style.display = "none";
-      document.getElementById("cover").style.display = "flex";
+    Gracias por llegar a mi vida,
+    por cada sonrisa, cada abrazo
+    y cada momento compartido.
 
-      window.scrollTo(0, 0);
-    }
+    <br><br>
 
-    function abrirRegalo() {
-      document.getElementById("cover").style.display = "none";
-      document.getElementById("gift").style.display = "flex";
+    Le doy gracias a Dios por haberte
+    puesto en mi camino. Sos una persona
+    muy especial para mí y quiero seguir
+    construyendo momentos hermosos
+    a tu lado.
 
-      window.scrollTo(0, 0);
-    }
+    <br><br>
 
-  </script>
+    Este pequeño detalle está hecho
+    con muchísimo amor, especialmente
+    para vos.
+  </div>
+
+  <div class="heart">💗</div>
+
+  <a class="button video-button"
+     href="https://drive.google.com/file/d/13xOuE3R-lyMb-b_rnhyTA4f9YnfgmPXf/view?usp=drivesdk"
+     target="_blank"
+     rel="noopener noreferrer">
+    Mirá tu video especial 🎬❤️
+  </a>
+
+  <div class="signature">
+    Te quiero muchísimo,<br>
+    mi Cuchurrumin ❤️
+  </div>
+
+</section>
+
+<script>
+
+let cartaAbierta = false;
+
+function abrirCarta() {
+
+  if (cartaAbierta) return;
+
+  cartaAbierta = true;
+
+  document.getElementById("envelopeArea")
+    .classList.add("opened");
+
+  document.getElementById("tapHint").style.display = "none";
+
+  setTimeout(() => {
+
+    document.getElementById("letterMessage").style.display = "block";
+
+    document.getElementById("continueButton").style.display = "inline-block";
+
+  }, 750);
+
+}
+
+function continuar() {
+
+  const musica = document.getElementById("musica");
+
+  musica.play().catch(error => {
+    console.log("No se pudo iniciar la música:", error);
+  });
+
+  document.getElementById("welcome").style.display = "none";
+  document.getElementById("cover").style.display = "flex";
+
+  window.scrollTo(0,0);
+
+}
+
+function abrirRegalo() {
+
+  document.getElementById("cover").style.display = "none";
+  document.getElementById("gift").style.display = "flex";
+
+  window.scrollTo(0,0);
+
+}
+
+</script>
 
 </body>
 </html>
