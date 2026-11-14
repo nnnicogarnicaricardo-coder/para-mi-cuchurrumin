@@ -27,6 +27,54 @@
       justify-content: center;
     }
 
+    /* PANTALLA DE BIENVENIDA */
+
+    .welcome {
+      background: linear-gradient(145deg, #fff0f3, #f4cbd8);
+    }
+
+    .welcome h1 {
+      font-size: clamp(38px, 9vw, 52px);
+      color: #8b2949;
+      margin: 15px 0;
+    }
+
+    .welcome-heart {
+      font-size: 65px;
+      margin: 15px;
+      animation: latido 1.4s infinite;
+    }
+
+    @keyframes latido {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.12); }
+    }
+
+    .welcome p {
+      font-size: 19px;
+      line-height: 1.7;
+      max-width: 350px;
+    }
+
+    /* BOTONES */
+
+    .button {
+      border: none;
+      border-radius: 30px;
+      padding: 15px 28px;
+      background: #9b3154;
+      color: white;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      box-shadow: 0 5px 15px rgba(100, 25, 55, 0.2);
+      margin-top: 15px;
+    }
+
+    /* SEGUNDA PANTALLA */
+
     .cover {
       background: linear-gradient(145deg, #fff0f3, #f9dce5);
     }
@@ -38,7 +86,7 @@
       margin-bottom: 20px;
     }
 
-    h1 {
+    .cover h1 {
       font-size: clamp(34px, 8vw, 48px);
       line-height: 1.15;
       margin: 20px 0;
@@ -102,24 +150,7 @@
       color: #a34b68;
     }
 
-    .button {
-      border: none;
-      border-radius: 30px;
-      padding: 15px 28px;
-      background: #9b3154;
-      color: white;
-      font-size: 17px;
-      font-weight: bold;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-block;
-      box-shadow: 0 5px 15px rgba(100, 25, 55, 0.2);
-      transition: transform 0.2s;
-    }
-
-    .button:active {
-      transform: scale(0.96);
-    }
+    /* TERCERA PANTALLA */
 
     .gift {
       display: none;
@@ -157,17 +188,45 @@
       font-style: italic;
       color: #ffe2eb;
     }
-
-    .gift .button {
-      box-shadow: 0 5px 18px rgba(30, 0, 10, 0.25);
-    }
   </style>
 </head>
 
 <body>
 
-  <!-- PRIMERA PANTALLA -->
-  <section id="cover" class="screen cover">
+  <!-- MUSICA DE FONDO -->
+  <audio id="musica" loop preload="auto">
+    <source src="Strawberry%20Guy%20-%20%20Mrs%20Magic%20(Strings%20Version)(MP3_160K).mp3" type="audio/mpeg">
+  </audio>
+
+
+  <!-- PANTALLA 1: BIENVENIDA -->
+
+  <section id="welcome" class="screen welcome">
+
+    <div class="welcome-heart">💗</div>
+
+    <h1>Hola, amor ❤️</h1>
+
+    <p>
+      Preparé algo muy especial para vos.
+      Solo necesito que me regales
+      un momentito...
+    </p>
+
+    <button class="button" onclick="comenzar()">
+      Presioná aquí 💌
+    </button>
+
+    <p style="font-size:14px; opacity:0.7;">
+      Hecho con mucho amor para vos ❤️
+    </p>
+
+  </section>
+
+
+  <!-- PANTALLA 2: SNOOPY Y BIBLIA -->
+
+  <section id="cover" class="screen cover" style="display:none;">
 
     <div class="eyebrow">
       UNA PEQUEÑA SORPRESA PARA ALGUIEN ESPECIAL ❤️
@@ -206,7 +265,8 @@
   </section>
 
 
-  <!-- SEGUNDA PANTALLA -->
+  <!-- PANTALLA 3: REGALO FINAL -->
+
   <section id="gift" class="screen gift">
 
     <div class="heart">❤️</div>
@@ -258,11 +318,27 @@
 
 
   <script>
+
+    function comenzar() {
+      const musica = document.getElementById("musica");
+
+      musica.play().catch(error => {
+        console.log("No se pudo iniciar la música:", error);
+      });
+
+      document.getElementById("welcome").style.display = "none";
+      document.getElementById("cover").style.display = "flex";
+
+      window.scrollTo(0, 0);
+    }
+
     function abrirRegalo() {
       document.getElementById("cover").style.display = "none";
       document.getElementById("gift").style.display = "flex";
+
       window.scrollTo(0, 0);
     }
+
   </script>
 
 </body>
